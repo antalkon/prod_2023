@@ -1,6 +1,9 @@
 name: Run tests
 
-on: deployment
+on:
+  push:
+    branches:
+      - main
 
 permissions:
   contents: read
