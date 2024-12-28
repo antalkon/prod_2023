@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/antalkon/prod_2023/internal/config"
+	"github.com/antalkon/prod_2023/internal/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -53,7 +54,9 @@ func createDSN(cfg *config.Config) string {
 
 // migrateModels выполняет миграцию всех моделей
 func migrateModels() error {
-	modelsToMigrate := []interface{}{}
+	modelsToMigrate := []interface{}{
+		&models.User{},
+	}
 
 	for _, model := range modelsToMigrate {
 		log.Printf("Migrating model: %T", model)
