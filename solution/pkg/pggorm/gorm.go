@@ -56,6 +56,7 @@ func createDSN(cfg *config.Config) string {
 func migrateModels() error {
 	modelsToMigrate := []interface{}{
 		&models.User{},
+		&models.Friends{},
 	}
 
 	for _, model := range modelsToMigrate {

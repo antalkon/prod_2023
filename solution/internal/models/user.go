@@ -11,3 +11,8 @@ type User struct {
 	Phone        string `json:"phone" gorm:"size:15" validate:"omitempty,min=10,max=15"`
 	Image        string `json:"image" gorm:"size:255" validate:"omitempty,url"`
 }
+
+type Password struct {
+	OldPassword string `json:"oldPassword"`
+	NewPassword string `json:"newPassword" validate:"required,min=6,max=128"`
+}

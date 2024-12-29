@@ -3,6 +3,7 @@ package router
 import (
 	middleware1 "github.com/antalkon/prod_2023/internal/middleware"
 	hauth "github.com/antalkon/prod_2023/internal/transport/rest/handler/hAuth"
+	hfriends "github.com/antalkon/prod_2023/internal/transport/rest/handler/hFriends"
 	hmain "github.com/antalkon/prod_2023/internal/transport/rest/handler/hMain"
 	hme "github.com/antalkon/prod_2023/internal/transport/rest/handler/hMe"
 	"github.com/labstack/echo/v4"
@@ -45,6 +46,16 @@ func RegisterRoutes(e *echo.Echo) {
 	{
 		me.GET("/profile", hme.MyProfile)
 		me.PATCH("/profile", hme.EditMyProfile)
+		me.POST("/updatePassword", hme.UpdPsw)
+
+	}
+	friends := api.Group("/friends", middleware1.AuthMiddleware)
+
+	{
+		friends.GET("", hfriends.Friends)
+
+		friends.POST("/add", hfriends.Add)
+		friends.POST("/remove", hfriends.Remove)
 
 	}
 
