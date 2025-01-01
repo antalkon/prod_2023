@@ -38,7 +38,7 @@ func RegisterRoutes(e *echo.Echo) {
 	auth := api.Group("/auth")
 	{
 		auth.POST("/register", hauth.Register)
-		auth.POST("/login", hauth.Login)
+		auth.POST("/sign-in", hauth.Login)
 
 	}
 
